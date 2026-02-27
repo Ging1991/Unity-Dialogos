@@ -12,7 +12,7 @@ namespace Ging1991.Persistencia.Tests {
 
 		void Start() {
 			string direccion = new DireccionRecursos("datos", "dialogo").Generar();
-			LectorListaGenerica<AccionTest> lector = new(direccion, Lectores.TipoLector.RECURSOS);
+			LectorLista<AccionTest> lector = new(direccion, Lectores.TipoLector.RECURSOS);
 			LectorImagenes lectorImagenes = new(new DireccionRecursos("imagenes"));
 			dialogo.Inicializar(lector.GetLista(), lectorImagenes, lectorImagenes);
 		}

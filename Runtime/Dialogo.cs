@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Ging1991.Core.Interfaces;
 using Ging1991.Dialogos.Interpretes;
 using Ging1991.Dialogos.Persistencia;
-using Ging1991.Relojes;
 using UnityEngine;
 
 namespace Ging1991.Dialogos {
@@ -14,7 +13,7 @@ namespace Ging1991.Dialogos {
 		private List<T> acciones;
 		public int indice;
 
-		public void Inicializar(List<T> acciones, IGetImagen ilustradorMiniatura, IGetImagen ilustradorPersonajes) {
+		public void Inicializar(List<T> acciones, IProveedor<string, Sprite> ilustradorMiniatura, IProveedor<string, Sprite> ilustradorPersonajes) {
 			this.acciones = acciones;
 			pantallaTactil.Inicializar(this);
 			interprete.Inicializar(ilustradorMiniatura, ilustradorPersonajes);

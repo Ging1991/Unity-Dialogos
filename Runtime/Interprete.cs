@@ -1,7 +1,6 @@
 using Ging1991.Core.Interfaces;
 using Ging1991.Dialogos.Persistencia;
 using Ging1991.Interfaces;
-using Ging1991.Relojes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +12,12 @@ namespace Ging1991.Dialogos.Interpretes {
 		public bool secuenciandoTexto;
 		public Image ilustracionMiniatura;
 		public GameObject miniaturaOBJ;
-		private IGetImagen ilustradorMiniatura;
-		private IGetImagen ilustradorPersonajes;
+		private IProveedor<string, Sprite> ilustradorMiniatura;
+		private IProveedor<string, Sprite> ilustradorPersonajes;
 		public GameObject personajeClaseOBJ;
 		public Transform padrePersonajes;
 
-		public void Inicializar(IGetImagen ilustradorMiniatura, IGetImagen ilustradorPersonajes) {
+		public void Inicializar(IProveedor<string, Sprite> ilustradorMiniatura, IProveedor<string, Sprite> ilustradorPersonajes) {
 			this.ilustradorMiniatura = ilustradorMiniatura;
 			this.ilustradorPersonajes = ilustradorPersonajes;
 		}
@@ -43,7 +42,7 @@ namespace Ging1991.Dialogos.Interpretes {
 				GameObject instancia = Instantiate(personajeClaseOBJ);
 				instancia.name = accion.nombre;
 				instancia.transform.SetParent(padrePersonajes);
-				instancia.GetComponent<Image>().sprite = ilustradorPersonajes.GetImagen(accion.imagen);
+				instancia.GetComponent<Image>().sprite = ilustradorPersonajes.GetElemento(accion.imagen);
 				RectTransform recta = instancia.GetComponent<RectTransform>();
 				recta.localScale = Vector3.one;
 				recta.sizeDelta = new Vector2(accion.ancho, accion.alto);
@@ -98,7 +97,7 @@ namespace Ging1991.Dialogos.Interpretes {
 				}
 				else {
 					miniaturaOBJ.SetActive(true);
-					ilustracionMiniatura.sprite = ilustradorMiniatura.GetImagen(accion.imagen);
+					ilustracionMiniatura.sprite = ilustradorMiniatura.GetElemento(accion.imagen);
 				}
 			}
 
