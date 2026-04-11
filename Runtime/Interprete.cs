@@ -1,6 +1,6 @@
 using Ging1991.Core.Interfaces;
 using Ging1991.Dialogos.Persistencia;
-using Ging1991.Interfaces;
+using Ging1991.Interfaces.Salida;
 using UnityEngine;
 using UnityEngine.UI;
 
