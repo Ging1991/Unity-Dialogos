@@ -1,5 +1,4 @@
 using Ging1991.Core.Interfaces;
-using Ging1991.Relojes;
 using UnityEngine;
 
 namespace Ging1991.Dialogos {
